@@ -4,10 +4,19 @@ const FormView = Backbone.View.extend({
     tagName: "form",
     id: "new-expense-form",
 
+    events: {
+        "submit": "addNewExpense",
+    },
+
     render() {
         // By default Backbone's elements are <div>
         this.el.innerHTML = this.markup;
         return this;
+    },
+
+    addNewExpense(event) {
+        event.preventDefault();
+        alert("You submitted the form");
     },
 
     markup: `
