@@ -16,7 +16,13 @@ const FormView = Backbone.View.extend({
 
     addNewExpense(event) {
         event.preventDefault();
-        alert("You submitted the form");
+
+        // description refers to the name="" in <input>
+        const description = this.el.description.value;
+        const date = this.el.date.value;
+        const amount = this.el.amount.value;
+
+        console.log(description, date, amount);
     },
 
     markup: `
