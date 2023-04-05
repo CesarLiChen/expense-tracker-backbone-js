@@ -23,7 +23,7 @@ const FormView = Backbone.View.extend({
         const amount = this.el.amount.value;
 
         const expense = new Expense({
-            description, //same as description: description in ES6
+            description, //same as 'description: description' in ES6
             date,
             amount,
         });
