@@ -1,6 +1,8 @@
 const Expense = Backbone.Model.extend({
 
-    initialize() {
-        console.log("I'm a new expense")
-    }
+    // initialize method only tells us when something is created.
+    
+    // initialize() {
+    //     console.log("I'm a new expense")
+    // }
 });
