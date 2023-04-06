@@ -9,6 +9,8 @@ const ExpensesView = Backbone.View.extend({
     },
 
     render() {
+        this.el.innerHTML = ""; //Clears view before adding expenses
+
         this.collection.forEach( (expense) => {
             this.addExpense(expense);
         });
