@@ -18,7 +18,9 @@ const ExpensesView = Backbone.View.extend({
     },
 
     addExpense(expense) {
-        const expenseView = new SingleExpenseView();
+        const expenseView = new SingleExpenseView({
+            model: expense,
+        });
         expenseView.render();
 
         this.$el.append(expenseView.el);
