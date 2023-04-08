@@ -4,7 +4,10 @@ const Expense = Backbone.Model.extend({
     
     initialize() {
         console.log("I'm a new expense")
-        this.set("id", this.generateId())
+
+        if (!this.get("id")) {
+            this.set("id", this.generateId());
+        }
     },
     
     generateId() {

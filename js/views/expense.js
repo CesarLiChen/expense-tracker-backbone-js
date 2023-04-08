@@ -21,7 +21,7 @@ const SingleExpenseView = Backbone.View.extend({
         const model = this.model.toJSON();
         console.log(model);
 
-        this.el.innerHTML = this.template(model);
+        this.el.innerHTML = this.template({description: model.description, date: model.date, amount: model.amount});
         return this;
     }
 });
