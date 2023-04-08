@@ -3,11 +3,14 @@
 const Expenses = Backbone.Collection.extend({
     model: Expense, // Kind of model it is expecting
 
-    // initialize() {
-    //     this.on("add", this.add);
-    // },
+    initialize() {
+        this.on("add", this.addToDB);
+    },
 
-    // add() {
-    //     alert("We have a new expense");
-    // }
+    addToDB(expense) {
+        console.log(expense)
+        const id = expense.get("id");
+
+        localStorage.setItem(id, JSON.stringify(expense));
+    }
 });
