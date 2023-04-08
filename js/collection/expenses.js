@@ -22,7 +22,7 @@ const Expenses = Backbone.Collection.extend({
             console.log(expenseData);
 
             const expense = new Expense(expenseData);
-            this.add(new Expense(expenseData));
+            this.add(expense);
         }
     }
 });
