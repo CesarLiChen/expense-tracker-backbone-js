@@ -2,6 +2,11 @@ const SingleExpenseView = Backbone.View.extend({
     tagName: "div",
     className: "expense",
 
+    // Event: click on an obj with class "delete"
+    events: {
+        "click .delete": "removeExpense"
+    },
+
     // Templates with Underscore.js
     template: _.template(`
         <div class="field">
@@ -15,6 +20,10 @@ const SingleExpenseView = Backbone.View.extend({
         <div class="field">
             <h2><%= amount %></h2>
         </div>
+
+        <div class="actions">
+            <button class="delete">Delete</button>
+        </div>
     `),
 
     render() {
@@ -23,5 +32,9 @@ const SingleExpenseView = Backbone.View.extend({
 
         this.el.innerHTML = this.template(model);
         return this;
+    },
+
+    removeExpense() {
+        this.remove(); //Function from Backbone.js
     }
 });
