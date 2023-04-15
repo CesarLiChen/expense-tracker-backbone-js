@@ -19,6 +19,7 @@ const ExpensesView = Backbone.View.extend({
 
     addExpense(expense) {
         const expenseView = new SingleExpenseView({
+            collection: this.collection,
             model: expense,
         });
         expenseView.render();

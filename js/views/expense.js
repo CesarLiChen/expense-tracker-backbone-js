@@ -35,6 +35,7 @@ const SingleExpenseView = Backbone.View.extend({
     },
 
     removeExpense() {
+        this.collection.remove(this.model); // remove is built-in from Backbone
         this.remove(); //Function from Backbone.js
     }
 });
