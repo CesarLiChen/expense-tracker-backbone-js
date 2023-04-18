@@ -6,6 +6,8 @@ const SingleExpenseView = Backbone.View.extend({
     events: {
         "click .delete": "removeExpense",
         "click .edit": "setExpenseEditable",
+        "reset .edit-expense-form": "render",
+        "submit .edit-expense-form": "saveEdit",
     },
 
     // Templates with Underscore.js
@@ -54,5 +56,24 @@ const SingleExpenseView = Backbone.View.extend({
 
     setExpenseEditable() {
         this.el.innerHTML = this.formTemplate(this.model.toJSON());
+    },
+
+    saveEdit(event) {
+        event.preventDefault();
+
+        const form = event.currentTarget; // This will be the current expense form.
+
+        const description = form.description.value;
+        const date = form.date.value;
+        const amount = form.amount.value;
+
+        console.log(description, date, amount);
+        this.model.set({
+            description,
+            date,
+            description,
+        });
+
+        this.render();
     }
 });
