@@ -26,9 +26,17 @@ const FormView = Backbone.View.extend({
             description, //same as 'description: description' in ES6
             date,
             amount,
+        }, {
+            validate: true,
         });
 
-        this.collection.add(expense);
+        console.log(expense);
+
+        if (expense.validationError) {
+            alert(expense.validationError);
+        } else {
+            this.collection.add(expense);
+        }
 
         console.log(description, date, amount);
     },

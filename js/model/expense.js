@@ -12,5 +12,14 @@ const Expense = Backbone.Model.extend({
     
     generateId() {
         return new Date().getTime();
+    },
+
+    validate(expense) { // Special method in Backbone
+        console.log("validate: ")
+        console.log(expense);
+
+        if (expense.amount.length === 0) {
+            return "Invalid amount";
+        }
     }
 });
