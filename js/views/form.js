@@ -5,6 +5,7 @@ const FormView = Backbone.View.extend({
     id: "new-expense-form",
 
     events: {
+        "reset": "hideError",
         "submit": "addNewExpense",
     },
 
@@ -33,12 +34,21 @@ const FormView = Backbone.View.extend({
         console.log(expense);
 
         if (expense.validationError) {
-            alert(expense.validationError);
+            this.renderError(expense.validationError);
         } else {
+            this.hideError();
             this.collection.add(expense);
         }
 
         console.log(description, date, amount);
+    },
+
+    renderError(error) {
+        this.$(".error").text(error).removeClass("hidden");
+    },
+
+    hideError(error) {
+        this.$(".error").addClass("hidden");
     },
 
     markup: `
@@ -64,5 +74,7 @@ const FormView = Backbone.View.extend({
             <button type="reset">Cancel</button>
             <button type="submit">Save</button>
         </div>
+
+        <div class="error hidden"></div>
     `,
 });
