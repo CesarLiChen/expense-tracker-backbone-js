@@ -47,8 +47,9 @@ const FormView = Backbone.View.extend({
         this.$(".error").text(error).removeClass("hidden");
     },
 
-    hideError(error) {
+    hideError() {
         this.$(".error").addClass("hidden");
+        console.log(this.$(".error"));
     },
 
     markup: `
