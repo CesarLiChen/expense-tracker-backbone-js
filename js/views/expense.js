@@ -21,7 +21,7 @@ const SingleExpenseView = Backbone.View.extend({
         </div>
 
         <div class="field">
-            <h2><%= amount %></h2>
+            <h2>$<%= amount %></h2>
         </div>
 
         <div class="actions">

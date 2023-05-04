@@ -8,8 +8,25 @@ const Expense = Backbone.Model.extend({
         if (!this.get("id")) {
             this.set("id", this.generateId());
         }
+
+        this.formatProperties();
     },
     
+    formatProperties() {
+        this.formatAmount();
+    },
+
+    formatAmount() {
+        let amount = this.get("amount");
+        console.log(amount);
+
+        if (amount.indexOf("$") === 0) {
+            amount = amount.substring(1);
+        }
+
+        this.set("amount", amount);
+    },
+
     generateId() {
         return new Date().getTime();
     },
