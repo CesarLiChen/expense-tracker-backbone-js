@@ -5,11 +5,13 @@ const Expense = Backbone.Model.extend({
     initialize() {
         console.log("I'm a new expense")
 
-        if (!this.get("id")) {
-            this.set("id", this.generateId());
-        }
+        if (!this.validationError) {
+            if (!this.get("id")) {
+                this.set("id", this.generateId());
+            }
 
-        this.formatProperties();
+            this.formatProperties();
+        }
     },
     
     formatProperties() {
@@ -33,7 +35,7 @@ const Expense = Backbone.Model.extend({
         if (cents && cents.length === 1) {
             cents += "0";
         }
-        
+
         this.set("amount", `${dollars}.${cents}`);
     },
 
