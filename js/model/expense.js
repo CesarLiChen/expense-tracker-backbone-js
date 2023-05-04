@@ -17,8 +17,12 @@ const Expense = Backbone.Model.extend({
     validate(expense) { // Special method in Backbone
         console.log("validate: ")
         console.log(expense);
+        return this.validateAmount(expense.amount);
+       
+    },
 
-        if (expense.amount.length === 0) {
+    validateAmount(amount) {
+        if (amount.length === 0 || !amount.match(/^\$?(\d*)(\.\d{0,2})?$/)) {
             return "Invalid amount";
         }
     }
