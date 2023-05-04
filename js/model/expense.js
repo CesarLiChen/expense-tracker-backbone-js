@@ -19,12 +19,22 @@ const Expense = Backbone.Model.extend({
     formatAmount() {
         let amount = this.get("amount");
         console.log(amount);
-
         if (amount.indexOf("$") === 0) {
             amount = amount.substring(1);
         }
 
-        this.set("amount", amount);
+        let [dollars, cents] = amount.split("."); //ES6 special format
+        if (dollars. length === 0) {
+            dollars = "0";
+        }
+        if (!cents || cents.length === 0) {
+            cents = "00";
+        }
+        if (cents && cents.length === 1) {
+            cents += "0";
+        }
+        
+        this.set("amount", `${dollars}.${cents}`);
     },
 
     generateId() {
