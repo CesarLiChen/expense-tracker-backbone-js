@@ -38,12 +38,13 @@ const SingleExpenseView = Backbone.View.extend({
 
             <button type="reset">Cancel</button>
             <button type="submit">Save</button>
+
+            <div class="error hidden"></div>
         </form>
     `),
 
     render() {
         const model = this.model.toJSON();
-        console.log(this);
 
         this.el.innerHTML = this.template(model);
         return this;
@@ -67,13 +68,22 @@ const SingleExpenseView = Backbone.View.extend({
         const date = form.date.value;
         const amount = form.amount.value;
 
-        console.log(description, date, amount);
         this.model.set({
             description,
             date,
-            description,
+            amount,
+        }, {
+            validate: true,
         });
 
-        this.render();
+        if (this.model.validationError) {
+            this.renderError(this.model.validationError);
+        } else {
+            this.render();
+        }
+    },
+
+    renderError(error) {
+        this.$(".error").text(error).removeClass("hidden");
     }
 });
