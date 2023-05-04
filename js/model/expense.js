@@ -16,6 +16,7 @@ const Expense = Backbone.Model.extend({
     
     formatProperties() {
         this.formatAmount();
+        this.formatDate();
     },
 
     formatAmount() {
@@ -37,6 +38,23 @@ const Expense = Backbone.Model.extend({
         }
 
         this.set("amount", `${dollars}.${cents}`);
+    },
+
+    formatDate() {
+        const date = this.get("date");
+
+        let [year, month, day] = date.split("-");
+        console.log(year, month, day)
+        if (month.length === 1) {
+            month = "0" + month;
+        }
+        if (day.length === 1) {
+            day = "0" + day;
+        }
+
+        const formattedDate = [year, month, day].join("-");
+
+        this.set("date", formattedDate);
     },
 
     generateId() {
