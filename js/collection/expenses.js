@@ -47,10 +47,26 @@ const Expenses = Backbone.Collection.extend({
     },
 
     changeSort(sortProperties) {
-        this.sortFieldfield = sortProperties.field;
+        this.sortField = sortProperties.field;
         this.sortDirection = sortProperties.direction;
         this.sort();
-        
+
         console.log(field, direction, " FROM COLLECTION ")
+    },
+
+    comparator(expense) {
+        let value;
+
+        if (this.sortField === "date") {
+            value = new Date(expense.get("date")).getTime();
+        } else {
+            value = parseFloat(expense.get("amount"));
+        }
+
+        if (this.sortDirection === "desc") {
+            value = value * -1;
+        }
+
+        return value;
     }
 });
