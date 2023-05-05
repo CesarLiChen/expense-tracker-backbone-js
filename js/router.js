@@ -1,9 +1,14 @@
 const ExpensesRouter = Backbone.Router.extend({
     routes: {
-        "sort": "sort",
+        "sort/:field": "sort",
+        "sort/:field/:direction": "sort",
     },
 
-    sort() {
-        console.log("I'm routing OVAH HEARR")
+    sort(field, direction) {
+        console.log("I'm routing OVAH HEAH");
+
+        if (direction === null) {
+            direction = "desc";
+        }
     }
 });
