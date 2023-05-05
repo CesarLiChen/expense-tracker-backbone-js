@@ -18,14 +18,22 @@ const Expenses = Backbone.Collection.extend({
     },
 
     addFromDB() {
-        let ids = Object.keys(localStorage)
-        for (let id of ids) {
+        // let ids = Object.keys(localStorage)
+        // for (let id of ids) {
+        //     const expenseData = JSON.parse(localStorage.getItem(id)); // Turns it back into a JavaScript object
+        //     console.log(expenseData);
+
+        //     const expense = new Expense(expenseData);
+        //     this.add(expense);
+        // }
+
+        Object.keys(localStorage).forEach((id) => {
             const expenseData = JSON.parse(localStorage.getItem(id)); // Turns it back into a JavaScript object
-            console.log(expenseData);
+            // console.log(expenseData);
 
             const expense = new Expense(expenseData);
             this.add(expense);
-        }
+        });
     },
 
     removeFromDB(expense) {
