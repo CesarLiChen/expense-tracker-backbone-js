@@ -3,6 +3,7 @@ const Expense = Backbone.Model.extend({
     // initialize method only tells us when something is created.
     
     initialize() {
+        this.on("change", this.formatProperties);
         console.log("I'm a new expense")
 
         if (!this.validationError) {
