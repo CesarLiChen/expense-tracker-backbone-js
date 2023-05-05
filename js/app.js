@@ -3,7 +3,7 @@ console.log("app")
 const collection = new Expenses();
 const formView = new FormView({ collection });
 const expensesView = new ExpensesView({ collection });
-const expensesRouter = new ExpensesRouter();
+const expensesRouter = new ExpensesRouter(collection);
 
 formView.render();
 expensesView.render();
