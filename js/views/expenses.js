@@ -20,7 +20,7 @@ const ExpensesView = Backbone.View.extend({
     `),
 
     initialize() {
-        this.listenTo(this.collection, "add", this.render);
+        this.listenTo(this.collection, "add sort", this.render);
     },
 
     render() {
