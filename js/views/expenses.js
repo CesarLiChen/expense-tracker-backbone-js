@@ -36,12 +36,21 @@ const ExpensesView = Backbone.View.extend({
         const dateDirection = isSortedByDate ? oppositeDirection : "desc";
         const amountDirection = isSortedByAmount ? oppositeDirection : "desc";
 
+        let dateSymbol = "";
+        let amountSymbol = "";
+
+        if (isSortedByDate) {
+            dateSymbol = dateDirection === "asc" ? this.ASC_SYMBOL : this.DESC_SYMBOL;
+        } else {
+            amountSymbol = amountDirection === "asc" ? this.ASC_SYMBOL : this.DESC_SYMBOL;
+        }
+
         this.el.innerHTML = this.template({
             dateDirection,
             amountDirection,
 
-            dateSymbol: "",
-            amountSymbol: this.ASC_SYMBOL,
+            dateSymbol,
+            amountSymbol,
         });
 
         this.collection.forEach( (expense) => {
