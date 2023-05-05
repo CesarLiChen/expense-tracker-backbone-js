@@ -51,7 +51,7 @@ const Expenses = Backbone.Collection.extend({
         this.sortDirection = sortProperties.direction;
         this.sort();
 
-        console.log(field, direction, " FROM COLLECTION ")
+        // console.log(field, direction, " FROM COLLECTION ")
     },
 
     comparator(expense) {
