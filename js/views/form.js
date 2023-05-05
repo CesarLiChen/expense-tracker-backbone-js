@@ -38,6 +38,7 @@ const FormView = Backbone.View.extend({
         } else {
             this.hideError();
             this.collection.add(expense);
+            this.el.reset();
         }
 
         console.log(description, date, amount);
