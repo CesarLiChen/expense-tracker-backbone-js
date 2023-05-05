@@ -3,6 +3,9 @@
 const Expenses = Backbone.Collection.extend({
     model: Expense, // Kind of model it is expecting
 
+    sortDirection: "desc",
+    sortField: "date",
+
     initialize() {
         this.addFromDB();
 
@@ -44,9 +47,10 @@ const Expenses = Backbone.Collection.extend({
     },
 
     changeSort(sortProperties) {
-        const field = sortProperties.field;
-        const direction = sortProperties.direction;
-
+        this.sortFieldfield = sortProperties.field;
+        this.sortDirection = sortProperties.direction;
+        this.sort();
+        
         console.log(field, direction, " FROM COLLECTION ")
     }
 });
